@@ -1,4 +1,4 @@
-# Cake.Pscp
+# Cake.Putty
 
 A Cake AddIn that extends Cake with [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html/) command tools.
 
@@ -7,6 +7,7 @@ A Cake AddIn that extends Cake with [Putty](http://www.chiark.greenend.org.uk/~s
 
 ## Supported tools
 
+- PLink v1.1.0
 - Pscp v1.0.0
 
 ## Including addin
@@ -24,16 +25,27 @@ To use the addin just add it to Cake call the aliases and configure any settings
 
 ...
 
-Task("Default")
+Task("Pscp")
     .Does(() => 
     {
         Pscp("FILENAME", "USERNAME@YOURSERVER:FILENAME");
     });
 
-Task("WithSettings")
+Task("PscpSettings")
     .Does(() => 
     {
         Pscp("FILENAME", "YOURSERVER:FILENAME", new PscpSettings{ SshVersion = SshVersion.V2, User="USERNAME" });
+    });
+
+Task("Plink")
+    .Does(() =>
+    {
+        Plink("USERNAME@YOURSERVER", "ls");
+    });
+Task("PlinkSettings")
+    .Does(() =>
+    {
+        Plink("YOURSERVER", "ls", new PlinkSettings { User="USERNAME", Protocol = PlinkProtocol.Ssh, SshVersion = SshVersion.V2 });
     });
 ```
 

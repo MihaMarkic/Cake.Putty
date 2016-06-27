@@ -3,7 +3,7 @@
 namespace Cake.Putty
 {
     /// <summary>
-    /// Alias for PSCP
+    /// Aliases for Putty.
     /// </summary>
     [CakeAliasCategory("File Operations")]
     public static partial class PuttyAliases

@@ -44,7 +44,7 @@ namespace Cake.Putty
         /// <summary>
         /// Force use of IPv4 or IPv6.
         /// </summary>
-        public IpVersion IpVersion { get; set; }
+        public IpVersion? IpVersion { get; set; }
         /// <summary>
         /// Enable compression.
         /// </summary>
