@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+      <id>Cake.Pscp</id>
+      <version>$version$</version>
+      <authors>Righthand</authors>
+      <owners>Righthand</owners>
+      <title>Cake.Putty</title>
+      <description>Cake Build addin for Putty.</description>
+      <summary>Putty command line addin for cake build.</summary>
+      <licenseUrl>https://github.com/MihaMarkic/Cake.Putty/blob/master/LICENSE</licenseUrl>
+      <projectUrl>https://github.com/MihaMarkic/Cake.Putty</projectUrl>
+      <releaseNotes>See https://github.com/MihaMarkic/Cake.Putty/blob/master/ReleaseNotes.md</releaseNotes>
+      
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <copyright>Copyright (c) Righthand 2016</copyright>
+      <tags>Cake Script Build Putty</tags>
+
+      <dependencies>
+         <dependency id="Cake.Core" version="0.13.0" />
+      </dependencies>
+   </metadata>
+
+   <files>
+		<file src="Cake.Putty\bin\Release\Cake.Putty.dll" target="lib\net45\Cake.Putty.dll" />
+      <file src="Cake.Putty\bin\Release\Cake.Putty.XML" target="lib\net45\Cake.Putty.XML" />
+   </files>
+</package>
