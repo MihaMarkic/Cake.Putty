@@ -9,7 +9,7 @@ namespace Cake.Putty
     /// 
     /// </summary>
     /// <typeparam name="TSettings"></typeparam>
-    public class GenericPscpRunner<TSettings> : PscpTool<TSettings>
+    public class GenericPlinkRunner<TSettings> : PlinkTool<TSettings>
         where TSettings: AutoToolSettings, new()
     {
         /// <summary>
@@ -19,55 +19,38 @@ namespace Cake.Putty
         /// <param name="environment"></param>
         /// <param name="processRunner"></param>
         /// <param name="globber"></param>
-        public GenericPscpRunner(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IGlobber globber) 
+        public GenericPlinkRunner(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IGlobber globber) 
             : base(fileSystem, environment, processRunner, globber)
         {
         }
 
         /// <summary>
-        /// Runs given <paramref name="command"/> using given <paramref name=" settings"/> and <paramref name="additional"/>.
+        /// Runs given <paramref name="host"/> and <paramref name="command"/> using given <paramref name=" settings"/>.
         /// </summary>
+        /// <param name="host"></param>
         /// <param name="command"></param>
         /// <param name="settings"></param>
-        /// <param name="additional"></param>
-        public void Run(string command, TSettings settings, string[] additional)
+        public void Run(string host, string command, TSettings settings)
         {
             if (string.IsNullOrEmpty(command))
             {
                 throw new ArgumentNullException(nameof(command));
             }
+            if (string.IsNullOrEmpty(host))
+            {
+                throw new ArgumentNullException(nameof(host));
+            }
             if (settings == null)
             {
                 throw new ArgumentNullException(nameof(settings));
             }
-            if (additional == null || additional.Length == 0)
-            {
-                throw new ArgumentNullException(nameof(additional));
-            }
-            Run(settings, GetArguments(command, settings, additional));
-        }
-        /// <summary>
-        /// Runs using given <paramref name=" settings"/> and <paramref name="additional"/>.
-        /// </summary>
-        /// <param name="settings"></param>
-        /// <param name="additional"></param>
-        public void Run(TSettings settings, IList<string> additional)
-        {
-            if (settings == null)
-            {
-                throw new ArgumentNullException(nameof(settings));
-            }
-            if (additional == null || additional.Count == 0)
-            {
-                throw new ArgumentNullException(nameof(additional));
-            }
-            Run(settings, GetArguments(null, settings, additional));
+            Run(settings, GetArguments(host, command, settings));
         }
 
-        private ProcessArgumentBuilder GetArguments(string command, TSettings settings, IList<string> additional)
+        private ProcessArgumentBuilder GetArguments(string host, string command, TSettings settings)
         {
             var builder = new ProcessArgumentBuilder();
-            builder.AppendAll(new string[] { command }, settings, additional);
+            builder.AppendAll(new string[] { host, command }, settings, new string[0]);
             return builder;
         }
 
@@ -75,14 +58,13 @@ namespace Cake.Putty
         /// Runs a command and returns a result based on processed output.
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="host"></param>
         /// <param name="command"></param>
         /// <param name="settings"></param>
         /// <param name="processOutput"></param>
-        /// <param name="arguments"></param>
         /// <returns></returns>
-        public T[] RunWithResult<T>(string command, TSettings settings, 
-            Func<IEnumerable<string>, T[]> processOutput,
-            params string[] arguments)
+        public T[] RunWithResult<T>(string host, string command, TSettings settings, 
+            Func<IEnumerable<string>, T[]> processOutput)
         {
             if (settings == null)
             {
@@ -93,7 +75,7 @@ namespace Cake.Putty
                 throw new ArgumentNullException("processOutput");
             }
             T[] result = new T[0];
-            Run(settings, GetArguments(command, settings, arguments), 
+            Run(settings, GetArguments(host, command, settings), 
                 new ProcessSettings { RedirectStandardOutput = true }, 
                 proc => {
                     result = processOutput(proc.GetStandardOutput());

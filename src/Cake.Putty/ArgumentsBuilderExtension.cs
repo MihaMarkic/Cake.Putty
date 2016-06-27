@@ -17,10 +17,10 @@ namespace Cake.Putty
         /// </summary>
         /// <typeparam name="TSettings"></typeparam>
         /// <param name="builder"></param>
-        /// <param name="command"></param>
         /// <param name="settings"></param>
         /// <param name="arguments"></param>
-        public static void AppendAll<TSettings>(this ProcessArgumentBuilder builder, string command, TSettings settings, IList<string> arguments)
+        /// <param name="commands"></param>
+        public static void AppendAll<TSettings>(this ProcessArgumentBuilder builder, IList<string> commands, TSettings settings, IList<string> arguments)
             where TSettings: AutoToolSettings, new()
         {
             if (builder == null)
@@ -35,10 +35,6 @@ namespace Cake.Putty
             {
                 settings = new TSettings();
             }
-            if (!string.IsNullOrEmpty(command))
-            {
-                builder.Append(command);
-            }
             foreach (var property in typeof(TSettings).GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
                 foreach (string argument in GetArgumentFromProperty(property, settings))
@@ -47,6 +43,13 @@ namespace Cake.Putty
                     {
                         builder.Append(argument);
                     }
+                }
+            }
+            if (commands?.Count > 0 )
+            {
+                foreach (string command in commands)
+                {
+                    builder.Append(command);
                 }
             }
             if (arguments != null)
@@ -93,7 +96,7 @@ namespace Cake.Putty
             {
                 yield return GetArgumentFromNullableIntProperty(property, (int?)property.GetValue(settings));
             }
-            else if (property.PropertyType.IsEnum)
+            else if (property.PropertyType.IsEnum || IsNullableType(property.PropertyType) && property.PropertyType.GenericTypeArguments[0].IsEnum)
             {
                 yield return GetArgumentFromEnumProperty(property, property.GetValue(settings));
             }

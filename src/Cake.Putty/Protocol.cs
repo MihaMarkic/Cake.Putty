@@ -8,12 +8,12 @@
         /// <summary>
         /// SFTP
         /// </summary>
-        [ParameterAttribute("sftp")]
+        [Parameter("sftp")]
         Sftp,
         /// <summary>
         /// SCP
         /// </summary>
-        [ParameterAttribute("scp")]
+        [Parameter("scp")]
         Scp
     }
 }

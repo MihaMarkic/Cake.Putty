@@ -128,6 +128,14 @@ namespace Cake.Putty.Tests
                 Assert.That(actual, Is.EqualTo("-one"));
             }
             [Test]
+            public void WhenGivenValue_PropertyIsHandled()
+            {
+                TestSettings settings = new TestSettings { Enum = TestEnum.One };
+                var actual = ArgumentsBuilderExtension.GetArgumentFromProperty(EnumProperty, settings);
+
+                Assert.That(actual.ToArray().Length, Is.EqualTo(1));
+            }
+            [Test]
             public void WhenGivenNull_NullIsReturned()
             {
                 var actual = ArgumentsBuilderExtension.GetArgumentFromEnumProperty(EnumProperty, null);
@@ -157,7 +165,7 @@ namespace Cake.Putty.Tests
                 TestSettings input = new TestSettings { String = "tubo" };
 
                 ProcessArgumentBuilder builder = new ProcessArgumentBuilder();
-                builder.AppendAll("cmd", input, new string[] { "arg1" });
+                builder.AppendAll(new string[] { "cmd" }, input, new string[] { "arg1" });
                 var actual = builder.Render();
 
                 Assert.That(actual, Is.EqualTo("cmd -s tubo arg1"));
