@@ -48,6 +48,7 @@
     <Compile Include="ArgumentsBuilderExtension.cs" />
     <Compile Include="AutoToolSettings.cs" />
     <Compile Include="BoolParameter.cs" />
+    <Compile Include="NamespaceDoc.cs" />
     <Compile Include="IpVersion.cs" />
     <Compile Include="ParameterAttribute.cs" />
     <Compile Include="Plink\PlinkProtocol.cs" />
