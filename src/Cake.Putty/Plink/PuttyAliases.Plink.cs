@@ -6,22 +6,29 @@ using Cake.Core.Annotations;
 namespace Cake.Putty
 {
     /// <summary>
-    /// Alias for PSCP
+    /// Contains functionality for working with Plink.
     /// </summary>
-    [CakeAliasCategory("File Operations")]
+    [CakeAliasCategory("Communication")]
     public static partial class PuttyAliases
     {
         /// <summary>
         /// Invokes Plink without settings
         /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="host">The host.</param>
+        /// <param name="command">The command.</param>
         [CakeMethodAlias]
         public static void Plink(this ICakeContext context, string host, string command)
         {
             context.Plink(host, command, null);
         }
         /// <summary>
-        /// Invokes Plink with settings
+        /// Invokes Plink using given <paramref name="settings"/>.
         /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="host">The host.</param>
+        /// <param name="command">The command.</param>
+        /// <param name="settings">The settings.</param>
         [CakeMethodAlias]
         public static void Plink(this ICakeContext context, string host, string command, PlinkSettings settings)
         {

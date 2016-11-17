@@ -6,40 +6,40 @@ using Cake.Core.Annotations;
 namespace Cake.Putty
 {
     /// <summary>
-    /// Alias for PSCP
+    /// Contains functionality for working with PSCP.
     /// </summary>
-    [CakeAliasCategory("File Operations")]
+    [CakeAliasCategory("Communication")]
     public static partial class PuttyAliases
     {
         /// <summary>
-        /// Invokes Pscp with a single from argument.
+        /// Invokes Pscp with a single from argument and <paramref name="settings"/>.
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <param name="settings"></param>
+        /// <param name="context">The context.</param>
+        /// <param name="from">From.</param>
+        /// <param name="to">To.</param>
+        /// <param name="settings">The settings.</param>
         [CakeMethodAlias]
         public static void Pscp(this ICakeContext context, string from, string to, PscpSettings settings)
         {
             context.Pscp(new string[] { from }, to, settings);
         }
         /// <summary>
-        /// Invokes Pscp with a single from argument and settings.
+        /// Invokes Pscp with a single from argument.
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
+        /// <param name="context">The context.</param>
+        /// <param name="from">From.</param>
+        /// <param name="to">To.</param>
         [CakeMethodAlias]
         public static void Pscp(this ICakeContext context, string from, string to)
         {
             context.Pscp(new string[] { from }, to);
         }
         /// <summary>
-        /// Invokes Pscp with array of from arguments.
+        /// Invokes Pscp with array of from arguments without settings..
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
+        /// <param name="context">The context.</param>
+        /// <param name="from">From.</param>
+        /// <param name="to">To.</param>
         [CakeMethodAlias]
         public static void Pscp(this ICakeContext context, string[] from, string to)
         {
@@ -48,10 +48,10 @@ namespace Cake.Putty
         /// <summary>
         /// Invokes Pscp with array of from arguments.
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <param name="settings"></param>
+        /// <param name="context">The context.</param>
+        /// <param name="from">From.</param>
+        /// <param name="to">To.</param>
+        /// <param name="settings">The settings.</param>
         [CakeMethodAlias]
         public static void Pscp(this ICakeContext context, string[] from, string to, PscpSettings settings)
         {

@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace Cake.Putty
 {
+    /// <summary>
+    /// PLink resolver
+    /// </summary>
     internal static class PlinkResolver
     {
         public static FilePath GetPlinkPath(IFileSystem fileSystem, ICakeEnvironment environment)

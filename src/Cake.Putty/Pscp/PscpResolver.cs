@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace Cake.Putty
 {
+    /// <summary>
+    /// PSCP resolver.
+    /// </summary>
     internal static class PscpResolver
     {
         public static FilePath GetPscpPath(IFileSystem fileSystem, ICakeEnvironment environment)
