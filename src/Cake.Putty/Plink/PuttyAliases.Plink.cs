@@ -44,7 +44,7 @@ namespace Cake.Putty
             {
                 throw new ArgumentNullException(nameof(command));
             }
-            var runner = new GenericPlinkRunner<PlinkSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericPlinkRunner<PlinkSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             runner.Run(host, command, settings ?? new PlinkSettings());
         }
     }

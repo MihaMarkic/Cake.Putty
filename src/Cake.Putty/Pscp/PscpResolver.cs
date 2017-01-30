@@ -25,7 +25,7 @@ namespace Cake.Putty
 
             // Cake already searches the PATH for the executable tool names.
             // Check for other known locations.
-            return !environment.IsUnix() 
+            return !environment.Platform.IsUnix() 
                 ? CheckCommonWindowsPaths(fileSystem)
                 : null;
         }
