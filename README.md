@@ -10,6 +10,10 @@ A Cake AddIn that extends Cake with [Putty](http://www.chiark.greenend.org.uk/~s
 - PLink v1.1.0
 - Pscp v1.0.0
 
+## Cake dependency
+- Cake v0.13 up to v1.1.1
+- Cake v0.17 v1.1.2+
+
 ## Including addin
 Including addin in cake script is easy.
 ```
