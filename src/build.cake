@@ -1,7 +1,7 @@
 ﻿#addin "Cake.FileHelpers"
 
 var Project = Directory("./Cake.Putty/");
-var TestProject = Directory("./Cake.Putty.Tests/");
+var TestProject = Directory("./Cake.PuttyTests/");
 var CakePuttyProj = Project + File("Cake.Putty.csproj");
 var CakeTestPuttyProj = TestProject + File("Cake.Putty.Test.csproj");
 var CakeTestPuttyAssembly = TestProject + Directory("bin/Release") + File("Cake.Putty.Tests.dll");
