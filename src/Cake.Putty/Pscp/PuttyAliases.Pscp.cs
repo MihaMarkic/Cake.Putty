@@ -67,7 +67,7 @@ namespace Cake.Putty
             {
                 throw new ArgumentNullException("to");
             }
-            var runner = new GenericPscpRunner<PscpSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericPscpRunner<PscpSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             List<string> additional = new List<string>(from);
             additional.Add(to);
             runner.Run(settings ?? new PscpSettings(), additional);
