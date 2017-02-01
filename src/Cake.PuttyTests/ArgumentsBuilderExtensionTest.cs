@@ -168,7 +168,7 @@ namespace Cake.Putty.Tests
                 builder.AppendAll(new string[] { "cmd" }, input, new string[] { "arg1" });
                 var actual = builder.Render();
 
-                Assert.That(actual, Is.EqualTo("cmd -s tubo arg1"));
+                Assert.That(actual, Is.EqualTo("-s tubo cmd arg1"));
             }
 
         }
