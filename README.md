@@ -5,6 +5,10 @@ A Cake AddIn that extends Cake with [Putty](http://www.chiark.greenend.org.uk/~s
 [![cakebuild.net](https://img.shields.io/badge/WWW-cakebuild.net-blue.svg)](http://cakebuild.net/)
 [![NuGet](https://img.shields.io/nuget/v/Cake.Putty.svg)](https://www.nuget.org/packages/Cake.Putty)
 
+## Requirements
+
+- since 1.1.3 references Cake 0.22
+
 ## Supported tools
 
 - PLink v1.1.0
