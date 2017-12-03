@@ -68,7 +68,7 @@ namespace Cake.Putty
         /// <returns></returns>
         public static bool IsNullableType(Type type)
         {
-            return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+            return type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Cake.Putty
             {
                 yield return GetArgumentFromNullableIntProperty(property, (int?)property.GetValue(settings));
             }
-            else if (property.PropertyType.IsEnum || IsNullableType(property.PropertyType) && property.PropertyType.GenericTypeArguments[0].IsEnum)
+            else if (property.PropertyType.GetTypeInfo().IsEnum || IsNullableType(property.PropertyType) && property.PropertyType.GenericTypeArguments[0].GetTypeInfo().IsEnum)
             {
                 yield return GetArgumentFromEnumProperty(property, property.GetValue(settings));
             }
