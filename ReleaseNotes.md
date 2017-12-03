@@ -1,5 +1,5 @@
 # Cake.Putty 1.2.0
-- added .netstandard support
+- adds .netstandard support
 # Cake.Putty 1.1.3
 - since 1.1.3 references Cake 0.22 (might be a breaking change)
 - adds cake-contrib icon
