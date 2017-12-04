@@ -1,6 +1,4 @@
-﻿#addin "Cake.FileHelpers"
-
-var Project = Directory("./Cake.Putty/");
+﻿var Project = Directory("./Cake.Putty/");
 var TestProject = Directory("./Cake.PuttyTests/");
 var CakePuttyProj = Project + File("Cake.Putty.csproj");
 var CakeTestPuttyProj = TestProject + File("Cake.Putty.Test.csproj");
@@ -17,9 +15,8 @@ Task("Default")
 	.Does (() =>
 	{
 		NuGetRestore (CakePuttySln);
-		DotNetBuild (CakePuttySln, c => {
-			c.Configuration = "Release";
-			c.Verbosity = Verbosity.Minimal;
+		DotNetCoreBuild (CakePuttySln, new DotNetCoreBuildSettings {
+			Configuration = "Release"
 		});
 });
 
@@ -31,26 +28,16 @@ Task("UnitTest")
 	});
 
 Task("NuGetPack")
-	.IsDependentOn("GetVersion")
 	.IsDependentOn("Default")
 	.IsDependentOn("UnitTest")
 	.Does (() =>
 {
 	CreateDirectory(Nupkg);
-	NuGetPack (CakePuttyNuspec, new NuGetPackSettings { 
-		Version = version,
-		Verbosity = NuGetVerbosity.Detailed,
-		OutputDirectory = Nupkg,
-		BasePath = "./",
-	});	
+	DotNetCorePack (CakePuttyProj, new DotNetCorePackSettings
+     {
+         Configuration = "Release",
+         OutputDirectory = "./nupkg/"
+     });
 });
-
-Task("GetVersion")
-	.Does(() => {
-		var assemblyInfo = ParseAssemblyInfo(AssemblyInfo);
-		var semVersion = string.Join(".", assemblyInfo.AssemblyVersion.Split('.').Take(3));
-		Information("Version {0}", semVersion);
-		version = semVersion;
-	});
 
 RunTarget (target);

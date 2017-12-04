@@ -6,14 +6,13 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73141119-9964-4C31-9406-A24AAF6AB92F}"
 	ProjectSection(SolutionItems) = preProject
 		build.cake = build.cake
-		Cake.Putty.nuspec = Cake.Putty.nuspec
 		..\README.md = ..\README.md
 		..\ReleaseNotes.md = ..\ReleaseNotes.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.Putty", "Cake.Putty\Cake.Putty.csproj", "{09C72AF0-C39F-4478-B134-CC9B49571B86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.Putty", "Cake.Putty\Cake.Putty.csproj", "{09C72AF0-C39F-4478-B134-CC9B49571B86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.PuttyTests", "Cake.PuttyTests\Cake.PuttyTests.csproj", "{141EB052-4188-4543-94A8-CD63193B1BFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.PuttyTests", "Cake.PuttyTests\Cake.PuttyTests.csproj", "{141EB052-4188-4543-94A8-CD63193B1BFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,6 +3,24 @@
   <PropertyGroup>
     <TargetFrameworks>net46;netstandard1.6</TargetFrameworks>
   </PropertyGroup>
+  <PropertyGroup>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageId>Cake.Putty</PackageId>
+    <Authors>Miha Markic</Authors>
+    <Company>Righthand</Company>
+    <Description>Cake Build addin for Putty.</Description>
+    <PackageProjectUrl>https://github.com/MihaMarkic/Cake.Putty</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/MihaMarkic/Cake.Putty/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>cake putty cake-build cake-contrib</PackageTags>
+    <IncludeSymbols>true</IncludeSymbols>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <PackageReleaseNotes>See https://github.com/MihaMarkic/Cake.Putty/blob/master/ReleaseNotes.md</PackageReleaseNotes>
+    <Version>1.2.0</Version>
+    <PackageIconUrl>https://raw.githubusercontent.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DocumentationFile>bin\Debug\net46\Cake.Putty.xml</DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="0.22.0" />
   </ItemGroup>
