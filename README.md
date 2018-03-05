@@ -7,6 +7,7 @@ A Cake AddIn that extends Cake with [Putty](http://www.chiark.greenend.org.uk/~s
 
 ## Requirements
 
+- since 1.3.0 references Cake 0.26
 - since 1.2.0 supports .netstandard (adds Linux and MacOS support)
 - since 1.1.3 references Cake 0.22
 
@@ -18,6 +19,7 @@ A Cake AddIn that extends Cake with [Putty](http://www.chiark.greenend.org.uk/~s
 ## Cake dependency
 - Cake v0.13 up to v1.1.1
 - Cake v0.17 v1.1.2+
+- Cake v0.26 v1.3.0+
 
 ## Including addin
 Including addin in cake script is easy.

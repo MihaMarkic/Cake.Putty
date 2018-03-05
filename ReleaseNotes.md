@@ -1,3 +1,5 @@
+# Cake.Putty 1.3.0
+- **BREAKING** references Cake 0.26.
 # Cake.Putty 1.2.0
 - adds .netstandard support (implicitly support for Linux and MacOS)
 # Cake.Putty 1.1.3
