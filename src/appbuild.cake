@@ -1,8 +1,8 @@
 ﻿var Project = Directory("./Cake.Putty/");
 var TestProject = Directory("./Cake.PuttyTests/");
 var CakePuttyProj = Project + File("Cake.Putty.csproj");
-var CakeTestPuttyProj = TestProject + File("Cake.Putty.Test.csproj");
-var CakeTestPuttyAssembly = TestProject + Directory("bin/Release") + File("Cake.Putty.Tests.dll");
+var CakeTestPuttyProj = TestProject + File("Cake.PuttyTests.csproj");
+var CakeTestPuttyAssembly = TestProject + Directory("bin") + Directory("Release") + Directory("netcoreapp2.0") + File("Cake.PuttyTests.dll");
 var AssemblyInfo = Project + File("Properties/AssemblyInfo.cs");
 var CakePuttySln = File("./Cake.Putty.sln");
 var CakePuttyNuspec = File("./Cake.Putty.nuspec");
@@ -14,7 +14,7 @@ var version = "";
 Task("Default")
 	.Does (() =>
 	{
-		NuGetRestore (CakePuttySln);
+		DotNetCoreClean(CakePuttySln);
 		DotNetCoreBuild (CakePuttySln, new DotNetCoreBuildSettings {
 			Configuration = "Release"
 		});
@@ -24,7 +24,10 @@ Task("UnitTest")
 	.IsDependentOn("Default")
 	.Does(() =>
 	{
-		NUnit3(CakeTestPuttyAssembly);
+		DotNetCoreTest(CakeTestPuttyProj, new DotNetCoreTestSettings
+		 {
+			 Configuration = "Release"
+		 });
 	});
 
 Task("NuGetPack")
