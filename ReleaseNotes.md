@@ -1,4 +1,9 @@
+# Cake.Putty 1.5.0
+
+- **BREAKING** references Cake 0.33.
+
 # Cake.Putty 1.4.0
+
 - **BREAKING** references Cake 0.28.
 # Cake.Putty 1.3.0
 - **BREAKING** references Cake 0.26.

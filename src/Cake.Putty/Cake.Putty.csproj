@@ -15,14 +15,14 @@
     <IncludeSymbols>true</IncludeSymbols>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageReleaseNotes>See https://github.com/MihaMarkic/Cake.Putty/blob/master/ReleaseNotes.md</PackageReleaseNotes>
-    <Version>1.4.0</Version>
+    <Version>1.5.0</Version>
     <PackageIconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
   </PropertyGroup>
   <PropertyGroup>
     <DocumentationFile>bin\Debug\netstandard2.0\Cake.Putty.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.28.0">
+    <PackageReference Include="Cake.Core" Version="0.33.0">
       <PrivateAssets>true</PrivateAssets>
     </PackageReference>
   </ItemGroup>
