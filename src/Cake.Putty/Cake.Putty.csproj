@@ -22,8 +22,6 @@
     <DocumentationFile>bin\Debug\netstandard2.0\Cake.Putty.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.33.0">
-      <PrivateAssets>true</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Cake.Core" Version="0.33.0" PrivateAssets="All" />
   </ItemGroup>
 </Project>
