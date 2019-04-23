@@ -16,7 +16,7 @@
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageReleaseNotes>See https://github.com/MihaMarkic/Cake.Putty/blob/master/ReleaseNotes.md</PackageReleaseNotes>
     <Version>1.5.0</Version>
-    <PackageIconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
+    <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
   </PropertyGroup>
   <PropertyGroup>
     <DocumentationFile>bin\Debug\netstandard2.0\Cake.Putty.xml</DocumentationFile>
