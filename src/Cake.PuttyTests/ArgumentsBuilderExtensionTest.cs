@@ -171,6 +171,26 @@ namespace Cake.Putty.Tests
                 Assert.That(actual, Is.EqualTo("-s tubo cmd arg1"));
             }
 
+            [Test]
+            public void WhenToolPathIsSet_DoNotThrow()
+            {
+                TestSettings input = new TestSettings { ToolPath = "tubo" };
+
+                ProcessArgumentBuilder builder = new ProcessArgumentBuilder();
+                builder.AppendAll(new string[] { "cmd" }, input, new string[] { "arg1" });
+            }
+
+            [Test]
+            public void WhenToolPathIsSet_DoNotIncludeIt()
+            {
+                TestSettings input = new TestSettings { ToolPath = "tubo" };
+
+                ProcessArgumentBuilder builder = new ProcessArgumentBuilder();
+                builder.AppendAll(new string[] { "cmd" }, input, new string[] { "arg1" });
+                var actual = builder.Render();
+
+                Assert.That(actual, Is.EqualTo("cmd arg1"));
+            }
         }
 
         [TestFixture]
@@ -186,6 +206,8 @@ namespace Cake.Putty.Tests
                 Assert.That(actual, Is.EqualTo("one"));
             }
         }
+
+        
     }
 
     public class TestSettings: AutoToolSettings
