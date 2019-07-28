@@ -1,3 +1,7 @@
+# Cake.Putty 1.5.1
+
+* Ignores xxxSettings superclass properties such as ToolPath that caused exceptions
+
 # Cake.Putty 1.5.0
 
 - **BREAKING** references Cake 0.33.
