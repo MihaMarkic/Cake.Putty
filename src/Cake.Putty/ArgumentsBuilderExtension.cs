@@ -35,7 +35,7 @@ namespace Cake.Putty
             {
                 settings = new TSettings();
             }
-            foreach (var property in typeof(TSettings).GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            foreach (var property in typeof(TSettings).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
             {
                 foreach (string argument in GetArgumentFromProperty(property, settings))
                 {
