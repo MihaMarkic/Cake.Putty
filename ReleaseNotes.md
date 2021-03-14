@@ -1,3 +1,7 @@
+# 1.6.0
+
+* References Cake 1.0.0
+
 # Cake.Putty 1.5.1
 
 * Ignores xxxSettings superclass properties such as ToolPath that caused exceptions

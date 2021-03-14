@@ -7,6 +7,7 @@ A Cake AddIn that extends Cake with [Putty](http://www.chiark.greenend.org.uk/~s
 
 ## Requirements
 
+- since 1.6.0 references Cake 1.0.0
 - since 1.5.0 references Cake 0.33
 - since 1.4.0 references Cake 0.28
 - since 1.3.0 references Cake 0.26
