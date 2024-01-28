@@ -2,7 +2,7 @@
 var TestProject = Directory("./Cake.PuttyTests/");
 var CakePuttyProj = Project + File("Cake.Putty.csproj");
 var CakeTestPuttyProj = TestProject + File("Cake.PuttyTests.csproj");
-var CakeTestPuttyAssembly = TestProject + Directory("bin") + Directory("Release") + Directory("netcoreapp2.0") + File("Cake.PuttyTests.dll");
+var CakeTestPuttyAssembly = TestProject + Directory("bin") + Directory("Release") + Directory("net8.0") + File("Cake.PuttyTests.dll");
 var AssemblyInfo = Project + File("Properties/AssemblyInfo.cs");
 var CakePuttySln = File("./Cake.Putty.sln");
 var CakePuttyNuspec = File("./Cake.Putty.nuspec");
@@ -14,8 +14,8 @@ var version = "";
 Task("Default")
 	.Does (() =>
 	{
-		DotNetCoreClean(CakePuttySln);
-		DotNetCoreBuild (CakePuttySln, new DotNetCoreBuildSettings {
+		DotNetClean(CakePuttySln);
+		DotNetBuild (CakePuttySln, new DotNetBuildSettings {
 			Configuration = "Release"
 		});
 });
@@ -24,7 +24,7 @@ Task("UnitTest")
 	.IsDependentOn("Default")
 	.Does(() =>
 	{
-		DotNetCoreTest(CakeTestPuttyProj, new DotNetCoreTestSettings
+		DotNetTest(CakeTestPuttyProj, new DotNetTestSettings
 		 {
 			 Configuration = "Release"
 		 });
@@ -36,7 +36,7 @@ Task("NuGetPack")
 	.Does (() =>
 {
 	CreateDirectory(Nupkg);
-	DotNetCorePack (CakePuttyProj, new DotNetCorePackSettings
+	DotNetPack (CakePuttyProj, new DotNetPackSettings
      {
          Configuration = "Release",
          OutputDirectory = "./nupkg/"

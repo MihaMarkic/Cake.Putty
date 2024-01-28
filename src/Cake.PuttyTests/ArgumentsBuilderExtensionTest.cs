@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using System.Reflection;
-using Cake.Core.IO;
-using NUnit.Framework;
-using Cake.Putty;
+﻿using System.Reflection;
 
 namespace Cake.Putty.Tests
 {
@@ -16,7 +12,8 @@ namespace Cake.Putty.Tests
         public static PropertyInfo EnumProperty => GetProperty(nameof(TestSettings.Enum));
         public static PropertyInfo GetProperty(string name)
         {
-            return typeof(TestSettings).GetProperty(name, BindingFlags.Public | BindingFlags.Instance);
+            return typeof(TestSettings).GetProperty(name, BindingFlags.Public | BindingFlags.Instance)
+                ?? throw new Exception($"Missing property {name}");
         }
         [TestFixture]
         public class GetArgumentFromBoolProperty
@@ -85,9 +82,9 @@ namespace Cake.Putty.Tests
             [Test]
             public void WhenGivenStringArrayProperty_FormatsProperly()
             {
-                var actual = ArgumentsBuilderExtension.GetArgumentFromStringArrayProperty(StringsProperty, new string[] { "tubo1", "tubo2" });
+                var actual = ArgumentsBuilderExtension.GetArgumentFromStringArrayProperty(StringsProperty, ["tubo1", "tubo2"]);
 
-                Assert.AreEqual(actual.ToArray(), new string[] { "-strs tubo1", "-strs tubo2" }); 
+                Assert.That(actual.ToArray(), Is.EqualTo(new string[] { "-strs tubo1", "-strs tubo2" })); 
             }
             [Test]
             public void WhenGivenNull_EmptyArrayReturned()
@@ -213,9 +210,9 @@ namespace Cake.Putty.Tests
     public class TestSettings: AutoToolSettings
     {
         [Parameter("s")]
-        public string String { get; set; }
+        public string? String { get; set; }
         [Parameter("strs")]
-        public string[] Strings { get; set; }
+        public string[]? Strings { get; set; }
         [Parameter("i")]
         public int? NullableInt { get; set; }
         [Parameter("b")]
